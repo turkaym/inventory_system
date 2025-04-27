@@ -25,14 +25,25 @@ pip install -r requirements.txt
 
 ```text
 inventory_system/
-├── inventory/              # Código fuente / Source code
+├── inventory/              # Código con Peewee ORM / Code with Peewee ORM
 │   ├── __init__.py
-│   ├── database.py         # Conexión a SQLite / SQLite connection
-│   ├── models.py           # Definición de tablas / Table definitions
-│   ├── controllers.py      # Lógica de negocio / Business logic
-│   └── cli.py              # Interfaz de línea de comandos / CLI interface
+│   ├── database.py         # Conexión a SQLite / SQLite connection (ORM)
+│   ├── models.py           # Definición de tablas / Table definitions (ORM)
+│   ├── controllers.py      # Lógica de negocio / Business logic (ORM)
+│   └── cli.py              # CLI interface (ORM)
+│
+├── raw_sql/                # Código “puro” sqlite3 / Raw sqlite3 code
+│   ├── __init__.py
+│   ├── db.py               # Conexión y setup con sqlite3 / sqlite3 connection & setup
+│   ├── controllers.py      # Funciones CRUD manuales / Manual CRUD functions
+│   └── cli.py              # CLI interface para raw_sql / CLI for raw_sql module
+│   └── queries.py
 ├── tests/                  # Pruebas unitarias / Unit tests
+│   ├── test_inventory.py   # (puedes separar tests ORM vs raw_sql si quieres)
+│   └── test_raw_sql.py
+│
 ├── .gitignore              # Ignorados / Ignored files and folders
 ├── README.md               # Documentación / Project documentation
-└── requirements.txt        # Dependencias / Dependencies
+└── requirements.txt        # Dependencias / Dependencies (Peewee, pytest…)
+
 
